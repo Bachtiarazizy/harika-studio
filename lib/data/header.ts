@@ -1,0 +1,11 @@
+const headerData = {
+  header: [
+    { label: "home", href: "/" },
+    { label: "blog", href: "/blog" },
+    { label: "works", href: "/works" },
+    { label: "services", href: "/services" },
+    { label: "gallery", href: "/gallery" },
+  ],
+};
+
+export default headerData;
