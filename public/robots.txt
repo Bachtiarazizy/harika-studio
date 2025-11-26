@@ -1,0 +1,28 @@
+# robots.txt
+# Letakkan di folder /public/robots.txt
+
+# Allow all bots
+User-agent: *
+Allow: /
+
+# Disallow admin pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://harikastudio.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 10
+
+# Specific rules for common bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

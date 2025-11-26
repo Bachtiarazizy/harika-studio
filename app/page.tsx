@@ -1,15 +1,19 @@
-import { AboutSection } from "@/components/about-section";
-import { BrandSection } from "@/components/brand-section";
-import { HeroSection } from "@/components/hero-section";
-import { ServiceSection } from "@/components/service-section";
+import HarikaStudioHero from "../components/home-page/hero-section";
+import HarikaSpaceSection from "@/components/home-page/space-section";
+import HarikaAboutSection from "@/components/home-page/about-section";
+import HarikaQuoteSection from "@/components/home-page/quote-section";
+import HarikaServicesSection from "@/components/home-page/service-section";
+import HarikaContactSection from "@/components/home-page/contact-section";
 
 export default async function Home() {
   return (
-    <main className="no-scrollbar overflow-x-hidden w-full h-full">
-      <HeroSection />
-      <AboutSection />
-      <BrandSection />
-      <ServiceSection />
+    <main className="">
+      <HarikaStudioHero />
+      <HarikaSpaceSection />
+      <HarikaAboutSection />
+      <HarikaQuoteSection />
+      <HarikaServicesSection />
+      <HarikaContactSection />
     </main>
   );
 }

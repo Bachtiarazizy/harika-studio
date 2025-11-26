@@ -20,14 +20,6 @@
   /* Fonts */
   --font-heading: var(--font-bebas);
   --font-body: var(--font-manrope);
-
-  /* Heading sizes mapping */
-  --font-size-h1: clamp(3.5rem, 4.2vw + 2.75rem, 5.75rem); /* 3.81rem - 6.66rem */
-  --font-size-h2: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem); /* 3.05rem - 5rem */
-  --font-size-h3: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem); /* 2.44rem - 3.75rem */
-  --font-size-h4: clamp(1.56rem, 1vw + 1.31rem, 2.11rem); /* 1.95rem - 2.81rem */
-  --font-size-h5: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem); /* 1.56rem - 2.11rem */
-  --font-size-h6: clamp(1rem, 0.34vw + 0.91rem, 1.19rem); /* 1.25rem - 1.58rem */
 }
 
 body {
@@ -46,30 +38,6 @@ h5,
 h6 {
   font-family: var(--font-bebas), sans-serif;
   font-weight: 400;
-}
-
-h1 {
-  font-size: var(--font-size-h1);
-}
-
-h2 {
-  font-size: var(--font-size-h2);
-}
-
-h3 {
-  font-size: var(--font-size-h3);
-}
-
-h4 {
-  font-size: var(--font-size-h4);
-}
-
-h5 {
-  font-size: var(--font-size-h5);
-}
-
-h6 {
-  font-size: var(--font-size-h6);
 }
 
 .cursor {
@@ -95,4 +63,21 @@ h6 {
   .font-bebas {
     font-family: var(--font-bebas), sans-serif;
   }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 3s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
