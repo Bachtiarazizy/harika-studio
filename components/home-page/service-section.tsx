@@ -12,30 +12,39 @@ export default function HarikaServicesSection() {
   const services = [
     {
       title: "BRAND IDENTITY",
-      subtitle: "DESIGN STUDIO",
-      description: "A carefully crafted selection of visual elements and brand strategy, everything you need for building strong brand identity that's more than just pretty.",
+      subtitle: "DESIGN SYSTEM",
+      description: "Strategic brand identity crafted with clarity and intention — from logo to complete visual systems designed to elevate your presence.",
       mainImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80",
       thumbnailImage: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&q=80",
       category: "Branding",
-      features: ["Logo Design", "Brand Guidelines", "Visual Identity"],
+      features: ["Logo Design", "Visual Identity System", "Brand Guidelines", "Typography & Color System", "Brand Strategy Essentials"],
+    },
+    {
+      title: "WEBSITE DESIGN",
+      subtitle: "UI/UX EXPERIENCE",
+      description: "Modern, intuitive, and conversion-focused website design built to deliver clarity, usability, and a strong digital presence.",
+      mainImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80",
+      thumbnailImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+      category: "Design",
+      features: ["UI/UX Design", "Landing Pages", "Corporate Websites", "Design Systems", "Wireframes & Prototypes"],
     },
     {
       title: "WEB DEVELOPMENT",
-      subtitle: "SERVICES",
-      description: "Modern and responsive web solutions tailored to your needs, from stunning landing pages to complex web applications that drive results.",
+      subtitle: "DIGITAL BUILD",
+      description: "Fast, scalable, and modern websites built with cutting-edge technologies — from custom static sites to full-featured digital platforms.",
       mainImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
       thumbnailImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80",
       category: "Development",
-      features: ["Custom Websites", "Web Apps", "E-commerce"],
+      features: ["Next.js / React Development", "Custom Websites", "CMS Integration", "E-commerce Platforms", "Performance Optimization"],
     },
     {
-      title: "DIGITAL MARKETING",
-      subtitle: "SOLUTIONS",
-      description: "Strategic digital marketing campaigns that amplify your brand voice and connect with your target audience across all platforms.",
-      mainImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=1200&q=80",
-      thumbnailImage: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80",
-      category: "Marketing",
-      features: ["Social Media", "SEO Strategy", "Content Marketing"],
+      title: "GRAPHIC DESIGN",
+      subtitle: "DIGITAL CONTENT",
+      description: "Visual communication crafted for modern brands — from engaging social media content to high-quality marketing assets designed for clarity and impact.",
+      mainImage: "https://images.unsplash.com/photo-1508830524289-0adcbe822b40?w=1200&q=80",
+      thumbnailImage: "https://images.unsplash.com/photo-1503602642458-232111445657?w=600&q=80",
+      category: "Content",
+      features: ["Social Media Design (Feed & Carousel)", "Digital Posters & Campaign Visuals", "Marketing Materials", "Product Mockups", "Brand Content Pack"],
     },
   ];
 
@@ -100,9 +109,9 @@ export default function HarikaServicesSection() {
               <p className="text-xs sm:text-sm uppercase tracking-wider text-[#131313]/60">Our Services</p>
             </motion.div>
             <motion.h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
-              Everything You Need
+              Everything You Need to Build
               <br />
-              <span className="text-[#E59156]">Just Steps Away</span>
+              <span className="text-[#E59156]">a Modern Digital Brand</span>
             </motion.h2>
           </div>
 

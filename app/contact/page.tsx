@@ -1,7 +1,8 @@
+// app/contact/page.tsx
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Mail, Phone, MapPin, Clock, Send, Instagram, Youtube, Linkedin, Dribbble } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Clock, Send, Instagram, Youtube, Linkedin, Dribbble, Loader2, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function HarikaContactPage() {
   const [formData, setFormData] = useState({
@@ -15,27 +16,94 @@ export default function HarikaContactPage() {
     agreed: false,
   });
 
-  const handleSubmit = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({
+    type: null,
+    message: "",
+  });
+
+  const handleSubmit = async () => {
+    // Reset status
+    setSubmitStatus({ type: null, message: "" });
+
+    // Validation
     if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill in all required fields");
+      setSubmitStatus({
+        type: "error",
+        message: "Please fill in all required fields (Name, Email, and Message)",
+      });
       return;
     }
+
     if (!formData.agreed) {
-      alert("Please accept the privacy policy");
+      setSubmitStatus({
+        type: "error",
+        message: "Please accept the privacy policy to continue",
+      });
       return;
     }
-    console.log("Form submitted:", formData);
-    alert("Thank you for reaching out! We will get back to you within 24 hours.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      service: "",
-      budget: "",
-      message: "",
-      agreed: false,
-    });
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please enter a valid email address",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus({
+          type: "success",
+          message: data.message || "Thank you for reaching out! We will get back to you within 24 hours.",
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          budget: "",
+          message: "",
+          agreed: false,
+        });
+
+        // Scroll to success message
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: data.message || "Failed to send message. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again or contact us directly via email.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -45,13 +113,15 @@ export default function HarikaContactPage() {
       content: "hello@harikastudio.com",
       subcontent: "info@harikastudio.com",
       link: "mailto:hello@harikastudio.com",
+      note: "For general inquiries, collaborations, and project discussions.",
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      content: "+62 812 3456 7890",
+      content: "+90 542 179 3483",
       subcontent: "+62 821 9876 5432",
-      link: "tel:+6281234567890",
+      link: "https://wa.me/905421793483",
+      note: "Available via WhatsApp & phone call.",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
@@ -59,6 +129,7 @@ export default function HarikaContactPage() {
       content: "Jl. Sudirman No. 123",
       subcontent: "Jakarta Selatan, Indonesia 12190",
       link: "https://maps.google.com",
+      note: "By appointment only.",
     },
     {
       icon: <Clock className="w-6 h-6" />,
@@ -66,12 +137,13 @@ export default function HarikaContactPage() {
       content: "Monday - Friday: 9AM - 6PM",
       subcontent: "Saturday: 10AM - 4PM",
       link: null,
+      note: "Closed on Sundays & public holidays.",
     },
   ];
 
   const services = ["Brand Identity Design", "Web Development", "UI/UX Design", "Digital Marketing", "Content Creation", "Full Package"];
 
-  const budgets = ["Less than $5,000", "$5,000 - $10,000", "$10,000 - $25,000", "$25,000 - $50,000", "$50,000+"];
+  const budgets = ["$1,500 – $3,000", "$3,000 – $6,000", "$6,000 – $12,000", "$12,000+", "Not sure yet"];
 
   return (
     <div className="bg-[#0A0A0A] text-white min-h-screen">
@@ -104,7 +176,7 @@ export default function HarikaContactPage() {
             </div>
           </h1>
 
-          <p className="text-start text-lg sm:text-xl lg:text-2xl text-[#F6F6F6]/70 max-w-3xl">We&apos;re here to help bring your vision to life. Reach out and let&apos;s create something amazing together.</p>
+          <p className="text-start text-lg sm:text-xl lg:text-2xl text-[#F6F6F6]/70 max-w-3xl">We&apos;re here to help turn your ideas into meaningful digital experiences. Tell us about your project — we&apos;ll take it from here.</p>
         </div>
 
         {/* Decorative Elements */}
@@ -138,6 +210,19 @@ export default function HarikaContactPage() {
       {/* Main Contact Form Section */}
       <section className="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
+          {/* Status Messages */}
+          {submitStatus.type && (
+            <div className={`mb-8 p-6 rounded-xl border ${submitStatus.type === "success" ? "bg-green-500/10 border-green-500/30" : "bg-red-500/10 border-red-500/30"}`}>
+              <div className="flex items-start gap-3">
+                {submitStatus.type === "success" ? <CheckCircle className="w-6 h-6 text-green-500 shrink-0 mt-0.5" /> : <AlertCircle className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />}
+                <div>
+                  <h3 className={`text-lg font-medium mb-1 ${submitStatus.type === "success" ? "text-green-500" : "text-red-500"}`}>{submitStatus.type === "success" ? "Success!" : "Error"}</h3>
+                  <p className="text-[#F6F6F6]/80 text-sm">{submitStatus.message}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left - Form */}
             <div>
@@ -151,7 +236,7 @@ export default function HarikaContactPage() {
                   <br />
                   Your Project
                 </h2>
-                <p className="text-[#F6F6F6]/70">Fill out the form below and we&apos;ll get back to you within 24 hours.</p>
+                <p className="text-[#F6F6F6]/70">Share a few details about what you&apos;re building — we&apos;ll get back to you within 24 hours.</p>
               </div>
 
               <div className="space-y-6">
@@ -166,7 +251,8 @@ export default function HarikaContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
                       placeholder="John Doe"
-                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                   <div>
@@ -178,7 +264,8 @@ export default function HarikaContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
                       placeholder="john@example.com"
-                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
@@ -192,17 +279,19 @@ export default function HarikaContactPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
                       placeholder="+62 812 3456 7890"
-                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-[#F6F6F6]/60 mb-2">Company Name</label>
+                    <label className="block text-sm text-[#F6F6F6]/60 mb-2">Company Name (optional)</label>
                     <input
                       type="text"
                       value={formData.company}
                       onChange={(e) => setFormData((prev) => ({ ...prev, company: e.target.value }))}
                       placeholder="Your Company"
-                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors"
+                      disabled={isSubmitting}
+                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
@@ -214,7 +303,8 @@ export default function HarikaContactPage() {
                     <select
                       value={formData.service}
                       onChange={(e) => setFormData((prev) => ({ ...prev, service: e.target.value }))}
-                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white outline-none transition-colors appearance-none cursor-pointer"
+                      disabled={isSubmitting}
+                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white outline-none transition-colors appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="" className="bg-[#131313]">
                         Select a service
@@ -231,7 +321,8 @@ export default function HarikaContactPage() {
                     <select
                       value={formData.budget}
                       onChange={(e) => setFormData((prev) => ({ ...prev, budget: e.target.value }))}
-                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white outline-none transition-colors appearance-none cursor-pointer"
+                      disabled={isSubmitting}
+                      className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white outline-none transition-colors appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="" className="bg-[#131313]">
                         Select budget range
@@ -253,9 +344,10 @@ export default function HarikaContactPage() {
                   <textarea
                     value={formData.message}
                     onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
-                    placeholder="Tell us about your project, goals, timeline, and any other relevant details..."
+                    placeholder="Tell us about your project goals, timeline, scope, and any references you have in mind..."
                     rows={6}
-                    className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors resize-none"
+                    disabled={isSubmitting}
+                    className="w-full bg-white/5 border border-white/10 focus:border-[#E59156] py-3 px-4 rounded-lg text-white placeholder-white/40 outline-none transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
@@ -266,7 +358,8 @@ export default function HarikaContactPage() {
                     id="privacy-policy"
                     checked={formData.agreed}
                     onChange={(e) => setFormData((prev) => ({ ...prev, agreed: e.target.checked }))}
-                    className="mt-1 w-5 h-5 rounded border-white/30 bg-transparent checked:bg-[#E59156] checked:border-[#E59156] focus:ring-[#E59156] focus:ring-offset-0 cursor-pointer"
+                    disabled={isSubmitting}
+                    className="mt-1 w-5 h-5 rounded border-white/30 bg-transparent checked:bg-[#E59156] checked:border-[#E59156] focus:ring-[#E59156] focus:ring-offset-0 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                   <label htmlFor="privacy-policy" className="text-sm text-[#F6F6F6]/60 leading-relaxed cursor-pointer">
                     I agree to the privacy policy and consent to the processing of personal data. <span className="text-[#E59156]">*</span>
@@ -274,10 +367,23 @@ export default function HarikaContactPage() {
                 </div>
 
                 {/* Submit Button */}
-                <button onClick={handleSubmit} className="group w-full flex items-center justify-center gap-3 px-8 py-4 bg-[#E59156] hover:bg-[#E59156]/90 rounded-full transition-colors text-lg font-medium">
-                  <Send className="w-5 h-5" />
-                  Send Message
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className="group w-full flex items-center justify-center gap-3 px-8 py-4 bg-[#E59156] hover:bg-[#E59156]/90 rounded-full transition-colors text-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Send Message
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
                 </button>
               </div>
             </div>
@@ -290,17 +396,19 @@ export default function HarikaContactPage() {
                 <div className="space-y-6">
                   <div>
                     <h4 className="text-lg font-medium mb-2 text-[#E59156]">How long does a typical project take?</h4>
-                    <p className="text-[#F6F6F6]/70 text-sm leading-relaxed">Project timelines vary based on scope and complexity. A typical brand identity project takes 4-6 weeks, while a complete website can take 8-12 weeks.</p>
+                    <p className="text-[#F6F6F6]/70 text-sm leading-relaxed">Timelines vary based on scope and complexity. Brand identity projects usually take 4–6 weeks, while full websites take 8–12 weeks.</p>
                   </div>
                   <div>
                     <h4 className="text-lg font-medium mb-2 text-[#E59156]">Do you work with international clients?</h4>
-                    <p className="text-[#F6F6F6]/70 text-sm leading-relaxed">Absolutely! We work with clients worldwide and have experience collaborating across different time zones through video calls and project management tools.</p>
+                    <p className="text-[#F6F6F6]/70 text-sm leading-relaxed">Absolutely. We regularly collaborate across time zones using video calls, shared workspaces, and a structured project process.</p>
                   </div>
                   <div>
                     <h4 className="text-lg font-medium mb-2 text-[#E59156]">What&apos;s your payment structure?</h4>
-                    <p className="text-[#F6F6F6]/70 text-sm leading-relaxed">
-                      We typically require a 50% deposit to begin work, with the remaining 50% due upon project completion. For larger projects, we can arrange milestone-based payments.
-                    </p>
+                    <p className="text-[#F6F6F6]/70 text-sm leading-relaxed">A 50% deposit is required to begin. The remaining 50% is due upon project completion. For larger projects, milestone-based payments are available.</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-medium mb-2 text-[#E59156]">Can you work with my existing brand or website?</h4>
+                    <p className="text-[#F6F6F6]/70 text-sm leading-relaxed">Yes. We can refine, redesign, or expand your current brand or digital presence.</p>
                   </div>
                 </div>
               </div>
@@ -325,17 +433,6 @@ export default function HarikaContactPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="h-96 sm:h-[500px] lg:h-[600px] bg-[#131313] relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="w-16 h-16 text-[#E59156] mx-auto mb-4" />
-            <p className="text-xl text-[#F6F6F6]/70">Map Integration</p>
-            <p className="text-sm text-[#F6F6F6]/50 mt-2">Jl. Sudirman No. 123, Jakarta Selatan</p>
           </div>
         </div>
       </section>

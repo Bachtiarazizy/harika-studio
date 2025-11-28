@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 // Navigation links data
 const navLinks = [
@@ -94,7 +95,7 @@ export default function NavbarSection() {
             {/* Logo */}
 
             <Link href="/" className="text-xl sm:text-2xl lg:text-3xl font-light tracking-tight leading-tight">
-              HARIKA STUDIO
+              <Image src="/logo-harika-studio-1.png" alt="Logo" width={150} height={60} />
             </Link>
 
             {/* Desktop Menu */}

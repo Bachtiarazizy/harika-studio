@@ -25,11 +25,11 @@ export default function HarikaStudioHero() {
             </h1>
 
             <p className="text-[#F6F6F6] text-sm sm:text-base max-w-md mb-6 sm:mb-8 leading-relaxed">
-              A creative agency where innovative design meets
+              We help brands turn ideas into powerful
               <br className="hidden sm:block" />
-              cutting-edge development, delivering brand
+              digital products — blending strategic design,
               <br className="hidden sm:block" />
-              identities that resonate and inspire.
+              clear thinking, and modern development.
             </p>
 
             <button className="group flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-black rounded-full hover:bg-[#E59156] hover:text-white transition-all duration-300 text-sm sm:text-base">
@@ -41,13 +41,12 @@ export default function HarikaStudioHero() {
           {/* Right Content - Desktop Only */}
           <div className="hidden lg:flex flex-col items-end text-right space-y-8 xl:space-y-12">
             <div>
-              <p className="text-xs text-[#F6F6F6]/60 mb-1">FULL</p>
-              <p className="text-xs text-[#F6F6F6]/60">SERVICE</p>
+              <p className="text-xs text-[#F6F6F6]/60 mb-1">FULL-SERVICE</p>
+              <p className="text-xs text-[#F6F6F6]/60">DIGITAL STUDIO</p>
             </div>
 
             <div>
-              <p className="text-sm xl:text-base mb-1">AN AGENCY DEDICATED TO</p>
-              <p className="text-sm xl:text-base">TRANSFORMING BRANDS</p>
+              <p className="text-sm xl:text-base mb-1">DEDICATED TO ELEVATING BRANDS</p>
               <p className="text-sm xl:text-base">INTO DIGITAL EXCELLENCE</p>
             </div>
 
@@ -67,7 +66,7 @@ export default function HarikaStudioHero() {
               </div>
             </div>
             <div className="mt-8 sm:mt-12 text-xs sm:text-sm space-y-1">
-              <p className="text-[#F6F6F6]">Services: Design • Development • Branding</p>
+              <p className="text-[#F6F6F6]">Branding • Web Design • Development</p>
               <p className="text-[#F6F6F6]/60">Based in Jakarta, Serving Worldwide</p>
             </div>
           </div>

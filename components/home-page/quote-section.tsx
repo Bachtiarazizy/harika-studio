@@ -12,15 +12,15 @@ export default function HarikaQuoteSection() {
   const slides = [
     {
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop",
-      quote: "Sometimes the most valuable things are the ones you don't notice at first — a design, a concept, the harmony between elements. This is where creativity flows down, and starts to feel like yours.",
+      quote: "The best design is felt before it is seen — quiet, intentional, and shaped with meaning.",
     },
     {
       image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&h=1080&fit=crop",
-      quote: "Great design is not just what looks good, it's what works perfectly — where innovation meets functionality, creating experiences that truly resonate.",
+      quote: "Creativity works when clarity leads — turning ideas into experiences that move people.",
     },
     {
       image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&h=1080&fit=crop",
-      quote: "Every brand has a story waiting to be told — we craft the narrative that connects your vision with your audience's hearts.",
+      quote: "Every brand has a story. We design the moments that make people remember it.",
     },
   ];
 
@@ -199,7 +199,7 @@ export default function HarikaQuoteSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <p className="text-sm sm:text-base lg:text-lg text-[#F6F6F6]/70 leading-relaxed">Elevate your brand beyond the ordinary. We create digital experiences that stand out, inspire action, and leave lasting impressions.</p>
+          <p className="text-sm sm:text-base lg:text-lg text-[#F6F6F6]/70 leading-relaxed">We craft digital experiences shaped by clarity, precision, and emotion — built to move people and define brands.</p>
         </motion.div>
 
         {/* Floating Elements */}

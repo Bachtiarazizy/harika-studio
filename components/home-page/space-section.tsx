@@ -22,9 +22,9 @@ export default function HarikaSpaceSection() {
             <div className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full items-center gap-4 xl:gap-6 pr-16">
               <div className="text-5xl lg:text-6xl xl:text-7xl text-white/20 font-thin -mt-2">[</div>
               <div className="text-left">
-                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider mb-2">Where innovative</p>
-                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider mb-2">design meets</p>
-                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider">development</p>
+                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider mb-2">WHERE STRATEGY</p>
+                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider mb-2">AND DESIGN</p>
+                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider">COME TOGETHER</p>
               </div>
             </div>
 
@@ -47,8 +47,8 @@ export default function HarikaSpaceSection() {
             <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-full items-center gap-4 xl:gap-6 pl-16">
               <div className="text-right">
                 <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider mb-2">Delivering brand</p>
-                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider mb-2">identities that</p>
-                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider">resonate</p>
+                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider mb-2">identities with</p>
+                <p className="text-xs text-[#F6F6F6]/60 uppercase tracking-wider">MEANING & CLARITY</p>
               </div>
               <div className="text-5xl lg:text-6xl xl:text-7xl text-white/20 font-thin -mt-2">]</div>
             </div>
@@ -63,9 +63,9 @@ export default function HarikaSpaceSection() {
           {/* Tagline */}
           <div className="max-w-2xl mx-auto">
             <p className="text-sm sm:text-base text-[#F6F6F6]/80 leading-relaxed">
-              Transforming brands into digital excellence through creative design,
+              We combine design thinking, technology, and brand storytelling
               <br className="hidden sm:block" />
-              strategic development, and compelling brand identities.
+              to create digital work that inspires and performs
             </p>
           </div>
 

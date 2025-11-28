@@ -5,34 +5,28 @@ import { ArrowRight, Users, Target, Award, Lightbulb } from "lucide-react";
 import Image from "next/image";
 
 export default function HarikaAboutPage() {
-  const quotes = [
-    "Design is not just what it looks like — Design is how it works",
-    "Good design is good business",
-    "Creativity is intelligence having fun",
-    "Simplicity is the ultimate sophistication",
-    "Design creates culture. Culture shapes values. Values determine the future",
-  ];
+  const quotes = ["CREATIVITY WITH PURPOSE", "DESIGN WITH INTENTION", "BUILT FOR IMPACT ", "CRAFTED WITH PRECISION", "THINKING MEETS HUMAN EXPERIENCE"];
 
   const values = [
     {
       icon: <Target className="w-8 h-8" />,
       title: "Purposeful Design",
-      description: "Every design decision serves a purpose, creating meaningful experiences that resonate with users.",
+      description: "Every decision is intentional — we design with meaning, clarity, and user impact in mind.",
     },
     {
       icon: <Lightbulb className="w-8 h-8" />,
       title: "Innovation First",
-      description: "We embrace cutting-edge technologies and creative solutions to stay ahead of the curve.",
+      description: "We combine creativity with modern technology to build solutions that stay ahead of the curve.",
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "Client Partnership",
-      description: "Your success is our success. We work closely with clients to achieve exceptional results.",
+      description: "We believe in collaboration. Your goals become our goals, and together we create exceptional outcomes.",
     },
     {
       icon: <Award className="w-8 h-8" />,
-      title: "Quality Excellence",
-      description: "We maintain the highest standards in every project, delivering work we're proud of.",
+      title: "Craft Excellence",
+      description: "We maintain high standards in every detail, delivering work that is refined, thoughtful, and built to last.",
     },
   ];
 
@@ -60,14 +54,14 @@ export default function HarikaAboutPage() {
           {/* Main Heading with Gradient */}
           <h1 className="text-start mb-6">
             <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 leading-tight">
-              <span className="inline-block bg-linear-to-r from-white via-white to-white/60 bg-clip-text text-transparent">Crafting Digital</span>
+              <span className="inline-block bg-linear-to-r from-white via-white to-white/60 bg-clip-text text-transparent">BUILDING BRANDS</span>
             </div>
             <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-              <span className="inline-block bg-linear-to-r from-[#E59156] via-[#D97D4A] to-[#E59156] bg-clip-text text-transparent">Excellence</span>
+              <span className="inline-block bg-linear-to-r from-[#E59156] via-[#D97D4A] to-[#E59156] bg-clip-text text-transparent">THAT MATTER</span>
             </div>
           </h1>
 
-          <p className="text-start text-lg sm:text-xl lg:text-2xl text-[#F6F6F6]/70 max-w-3xl">We are a creative studio dedicated to transforming ideas into exceptional digital experiences</p>
+          <p className="text-start text-lg sm:text-xl lg:text-2xl text-[#F6F6F6]/70 max-w-3xl">We craft digital experiences that connect with people and elevate brands with clarity, purpose, and precision.</p>
         </div>
 
         {/* Decorative Elements */}
@@ -101,17 +95,16 @@ export default function HarikaAboutPage() {
                 <span className="w-3 h-3 bg-[#E59156] rounded-full"></span>
                 <span className="text-sm uppercase tracking-wider text-[#F6F6F6]/60">Our Story</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-tight">
-                Building Brands
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-tight uppercase">
+                From Vision to
                 <br />
-                That Matter
+                Creative Impact
               </h2>
               <p className="text-base sm:text-lg text-[#F6F6F6]/70 mb-6 leading-relaxed">
-                Harika Studio began with a simple mission: to create digital experiences that truly connect with people. What started as a passionate vision has grown into a full-service creative agency.
+                We started Harika Studio with one belief: great design is built on clarity and purpose. Today, we partner with ambitious businesses to create brand identities, intuitive websites, and crafted digital experiences that inspire
+                action.{" "}
               </p>
-              <p className="text-base sm:text-lg text-[#F6F6F6]/70 mb-8 leading-relaxed">
-                Today, we partner with forward-thinking brands to craft compelling visual identities, build stunning websites, and develop comprehensive digital strategies that drive real results.
-              </p>
+              <p className="text-base sm:text-lg text-[#F6F6F6]/70 mb-8 leading-relaxed">Grounded in creativity and guided by strategy, we build work that doesn’t just look good — it works beautifully.</p>
               <button className="group flex items-center gap-2 px-6 py-3 bg-[#E59156] hover:bg-[#E59156]/90 rounded-full transition-colors">
                 Learn More
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -133,8 +126,8 @@ export default function HarikaAboutPage() {
               <span className="w-3 h-3 bg-[#E59156] rounded-full"></span>
               <span className="text-sm uppercase tracking-wider text-[#F6F6F6]/60">Our Values</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6">What Drives Us</h2>
-            <p className="text-lg text-[#F6F6F6]/70 max-w-3xl mx-auto">Our core principles guide every decision we make and every project we undertake</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6">What Drives Our Work</h2>
+            <p className="text-lg text-[#F6F6F6]/70 max-w-3xl mx-auto">Our principles define how we create, collaborate, and deliver value through every project.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -155,13 +148,13 @@ export default function HarikaAboutPage() {
       <section className="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6">
-            Ready to Start
+            Ready to Build
             <br />
-            Your Project?
+            Something Great?
           </h2>
-          <p className="text-lg text-[#F6F6F6]/70 mb-8 max-w-2xl mx-auto">Let&apos;s collaborate and create something extraordinary together</p>
+          <p className="text-lg text-[#F6F6F6]/70 mb-8 max-w-2xl mx-auto">Let’s work together to bring your brand to life through design, strategy, and digital craftsmanship.</p>
           <button className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-[#131313] rounded-full hover:bg-[#E59156] hover:text-white transition-all duration-300 text-lg font-medium">
-            Get In Touch
+            Let’s Collaborate
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

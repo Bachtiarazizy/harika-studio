@@ -27,12 +27,22 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://harikastudio.com"),
 
   title: {
-    default: "Harika Studio — Jasa Website & Desain Branding Profesional",
+    default: "Harika Studio — Branding, Web Design & UI/UX Agency | Modern Digital Experiences",
     template: "%s | Harika Studio",
   },
 
-  description: "Harika Studio menyediakan jasa pembuatan website profesional, jasa desain logo, brand identity, packaging design, UI/UX, dan layanan creative agency untuk bisnis & UMKM.",
-  keywords: ["jasa pembuatan website", "jasa desain logo", "jasa branding", "jasa web design", "jasa UI UX", "creative agency", "studio desain", "jasa website ekspor", "jasa website UMKM", "brand identity", "desain kemasan produk"],
+  description: "Harika Studio is a creative digital studio crafting modern brand identities, websites, and UI/UX experiences. We help businesses build strong digital presence through thoughtful design, strategy, and development.",
+  keywords: [
+    "branding agency indonesia",
+    "web design studio Indonesia",
+    "ui ux design agency",
+    "brand identity design",
+    "website development services",
+    "digital design agency",
+    "ui ux design services",
+    "creative agency jakarta",
+    "next js web development agency",
+  ],
 
   icons: {
     icon: "/favicon.ico",
@@ -49,7 +59,7 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "https://harikastudio.com",
     siteName: "Harika Studio",
-    title: "Harika Studio — Jasa Pembuatan Website & Desain Branding",
+    title: "Harika Studio — Branding, Web Design & UI/UX Agency",
     description: "Creative design studio penyedia jasa desain logo, branding, website profesional, packaging design, dan UI/UX untuk bisnis dan UMKM.",
     images: [
       {

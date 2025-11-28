@@ -63,9 +63,9 @@ function useCountAnimation(end: number, duration: number = 2000): [number, React
 }
 
 export default function HarikaAboutSection() {
-  const [projectsCount, projectsRef] = useCountAnimation(150);
+  const [projectsCount, projectsRef] = useCountAnimation(35);
   const [clientsCount, clientsRef] = useCountAnimation(98);
-  const [awardsCount, awardsRef] = useCountAnimation(25);
+  const [industryRecognitionsCount, industryRecognitionsRef] = useCountAnimation(5);
 
   return (
     <section className="relative bg-[#0A0A0A] text-white py-12 sm:py-16 lg:py-24">
@@ -87,8 +87,8 @@ export default function HarikaAboutSection() {
           {/* Right - Text Content */}
           <div className="flex flex-col justify-center order-1 lg:order-2">
             <p className="text-[#F6F6F6] text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
-              We&apos;re a creative digital studio dedicated to crafting exceptional brand experiences and innovative solutions, creating digital products{" "}
-              <span className="inline-block w-2 h-2 bg-[#E59156] rounded-full mx-1 align-middle"></span> you&apos;ll love to engage with
+              We’re a creative digital studio crafting meaningful brand experiences and modern digital products — built with strategy, clarity, and exceptional design.
+              {/* <span className="inline-block w-2 h-2 bg-[#E59156] rounded-full mx-1 align-middle"></span> you&apos;ll love to engage with */}
             </p>
 
             {/* Brand Title */}
@@ -111,8 +111,8 @@ export default function HarikaAboutSection() {
             {/* Description */}
             <div className="space-y-3 sm:space-y-4">
               <p className="text-xs sm:text-sm text-[#F6F6F6]/70 leading-relaxed">
-                Based in Jakarta, we blend creativity and strategic thinking to deliver premium digital solutions that elevate brands. Our comprehensive approach combines design excellence with user-centric methodology, crafting experiences
-                where innovation meets exceptional execution.
+                Based in Jakarta, we combine creative thinking with strategic insight to deliver premium digital solutions that elevate brands globally. Our approach merges design excellence with user-focused methodology — crafting
+                experiences where innovation meets precise, high-quality execution.
               </p>
             </div>
           </div>
@@ -174,12 +174,12 @@ export default function HarikaAboutSection() {
               <div className="w-8 h-px bg-[#E59156] mx-auto sm:mx-0"></div>
             </div>
 
-            {/* Stat 3 - Design Awards */}
-            <div className="text-center sm:text-left" ref={awardsRef}>
+            {/* Stat 3 -- Industry Recognitions */}
+            <div className="text-center sm:text-left" ref={industryRecognitionsRef}>
               <div className="mb-3 sm:mb-4">
-                <p className="text-xs text-[#F6F6F6]/50 mb-2 uppercase tracking-wider">Design Awards</p>
+                <p className="text-xs text-[#F6F6F6]/50 mb-2 uppercase tracking-wider">Industry Recognitions</p>
                 <p className="text-5xl sm:text-6xl lg:text-7xl font-light text-[#F6F6F6]">
-                  {awardsCount}
+                  {industryRecognitionsCount}
                   <span className="text-[#E59156]">+</span>
                 </p>
               </div>
